@@ -1,0 +1,33 @@
+<!--
+Authors : Siqing MA
+Date: 2018-7-28 created, 2018-9-16 updated
+Multi turtlebot3 follow start
+-->
+
+<launch>
+   
+    <node name="turtle1_tf_broadcaster" pkg="multi_turtlebot_opt" type="turtle_tf_broadcaster.py" respawn="false" output="screen" >
+      	<param name="turtle" type="string" value="tb3_0" />
+    </node>
+
+    <node name="turtle2_tf_broadcaster" pkg="multi_turtlebot_opt" type="turtle_tf_broadcaster.py" respawn="false" output="screen" >
+      	<param name="turtle" type="string" value="tb3_1" /> 
+    </node>
+
+    <node name="turtle3_tf_broadcaster" pkg="multi_turtlebot_opt" type="turtle_tf_broadcaster.py" respawn="false" output="screen" >
+      	<param name="turtle" type="string" value="tb3_2" /> 
+    </node>
+
+    <node pkg="multi_turtlebot_opt" type="DWA_control.py" name="follower_controls_1" output="screen">
+	<param name="mode" type="string" value="follow" />
+      	<param name="tb3_id" type="string" value="tb3_1" /> 
+      	<param name="goal_id" type="string" value="tb3_0" /> 
+    </node>
+
+    <node pkg="multi_turtlebot_opt" type="DWA_control.py" name="follower_controls_2" output="screen">
+	<param name="mode" type="string" value="follow" />
+      	<param name="tb3_id" type="string" value="tb3_2" /> 
+      	<param name="goal_id" type="string" value="tb3_1" /> 
+    </node>
+
+</launch>

@@ -1,0 +1,17 @@
+<package>
+  <description brief="multi_turtlebot_opt">
+
+     multi_turtlebot_opt
+
+  </description>
+  <author>kurt</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/multi_turtlebot_opt</url>
+  <depend package="std_msgs"/>
+  <depend package="rospy"/>
+  <depend package="roscpp"/>
+
+</package>
+
+
