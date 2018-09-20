@@ -1,10 +1,13 @@
 <!--
 Authors : Siqing MA
-Date: 2018-7-28 created, 2018-9-16 updated
+Date: 2018-7-28 created, 2018-9-21 updated
 Multi turtlebot3 follow start
 -->
 
 <launch>
+
+    <arg name="open_rviz" default="false"/>
+    <arg name="rviz_turtlebot_id" default="tb3_0"/>
    
     <node name="turtle1_tf_broadcaster" pkg="multi_turtlebot_opt" type="turtle_tf_broadcaster.py" respawn="false" output="screen" >
       	<param name="turtle" type="string" value="tb3_0" />
@@ -29,5 +32,10 @@ Multi turtlebot3 follow start
       	<param name="tb3_id" type="string" value="tb3_2" /> 
       	<param name="goal_id" type="string" value="tb3_1" /> 
     </node>
+
+    <group if="$(arg open_rviz)"> 
+	    <node pkg="rviz" type="rviz" name="rviz" required="true"
+		  args="-d $(find multi_turtlebot_opt)/rviz/$(arg rviz_turtlebot_id)_navigation.rviz"/>
+    </group>
 
 </launch>
